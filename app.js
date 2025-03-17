@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const ownersRouter = require('./routes/ownersRouter');
 const productsRouter = require('./routes/productsRouter');
 const usersRouter = require('./routes/usersRouter');
+const indexroute = require('./routes/index');
 const cookieParser = require('cookie-parser');
 const db = require('./config/mongoose_connection')
 
@@ -15,10 +16,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname,"public")));
 app.set('view engine','ejs');
 
+app.use("/",indexroute);
 app.use("/owners",ownersRouter);
 app.use("/users",usersRouter);
 app.use("/products",productsRouter);
 
 
 
-app.listen(3000);
+app.listen(3600);

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="font-['helvetica_now_display']">
+    <nav class="w-full fixed top-0 left-0 px-5 py-3">
+        <h3 class="text-xl">Scatch</h3>
+    </nav>
+   <div class="w-full h-screen flex px-20">
+     <div class="w-1/2 h-screen flex items-start justify-start pt-60">
+        <div class="w-full mb-5px px-20">
+        <h3 class="text-4xl">Welcome to <span class="text-blue-500 semibold">Scatch</span></h3>
+        <h5 class="text-2xl mb-5 px-1.5">Create Your Account</h5>
+       
+        <form autocomplete="off" action="/users/register" method="post">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="name">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="email">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 " type="text" placeholder="password">
+            <input class="bg-blue-500 rounded-full text-white mt-3 px-3 py-2" type="submit" value="Create Your Account">
+        </form>
+    </div> 
+    </div>
+    <div class="w-1/2 h-screen flex items-start justify-start pt-70">
+        <div class="w-full mb-5px px-20">
+        <h3 class="text-4xl mb-4.5">Login To Your <span class="text-blue-500 semibold">Scatch</span> Account</h3>
+        
+       
+        <form autocomplete="off" action="/users/login" method="post">
+          
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="email">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 " type="text" placeholder="password">
+            <input class="bg-blue-500 rounded-full text-white mt-3 px-3 py-2" type="submit" value="login">
+        </form>
+        </div>
+    </div>
+  </body>
+</html>
