@@ -9,6 +9,13 @@
     <nav class="w-full fixed top-0 left-0 px-5 py-3">
         <h3 class="text-xl">Scatch</h3>
     </nav>
+    <% if(error.length>0) { %>
+      <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <span class="inline-block mt-1 text-white">
+          <%= error %>
+        </span>
+      </div>
+      <% } %>
    <div class="w-full h-screen flex px-20">
      <div class="w-1/2 h-screen flex items-start justify-start pt-60">
         <div class="w-full mb-5px px-20">
@@ -16,9 +23,9 @@
         <h5 class="text-2xl mb-5 px-1.5">Create Your Account</h5>
        
         <form autocomplete="off" action="/users/register" method="post">
-            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="name">
-            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="email">
-            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 " type="text" placeholder="password">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="name" name="fullname">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="email" name="email">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 " type="password" placeholder="password" name="password">
             <input class="bg-blue-500 rounded-full text-white mt-3 px-3 py-2" type="submit" value="Create Your Account">
         </form>
     </div> 
@@ -30,8 +37,8 @@
        
         <form autocomplete="off" action="/users/login" method="post">
           
-            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="email">
-            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 " type="text" placeholder="password">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md   border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="email" name="email">
+            <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 " type="password" placeholder="password" name="password">
             <input class="bg-blue-500 rounded-full text-white mt-3 px-3 py-2" type="submit" value="login">
         </form>
         </div>
