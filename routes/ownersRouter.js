@@ -3,6 +3,8 @@ const router = express.Router();
 const ownerModel = require("../models/owner_model");
 
 if(process.env.NODE_ENV === "development"){
+
+  
   
   router.post("/create",async (req,res)=>{
    let owners = await ownerModel.find();
@@ -21,6 +23,10 @@ if(process.env.NODE_ENV === "development"){
    res.status(201).send(createdOwner);
 })
 }
+
+router.get("/loginpage", (req,res)=>{
+  res.render("owner");
+})
 
 router.get("/admin",(req,res)=>{
   let success=req.flash("success");

@@ -8,9 +8,7 @@ const {registeredUser} = require('../controllers/authController');
 const {loginUser} = require('../controllers/authController');
 const {logout} = require('../controllers/authController');
 
-router.get("/",(req,res)=>{
-    res.send('hey its working');
-})
+
 router.post("/register",registeredUser);
     
 router.post("/login",loginUser);

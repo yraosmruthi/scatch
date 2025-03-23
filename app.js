@@ -15,8 +15,6 @@ const indexroute = require('./routes/index');
 
 const db = require('./config/mongoose_connection')
 
-
-
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());

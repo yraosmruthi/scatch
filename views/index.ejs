@@ -16,6 +16,13 @@
         </span>
       </div>
       <% } %>
+      <% if(success.length>0) { %>
+        <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-yellow-500">
+          <span class="inline-block mt-1 text-white">
+            <%= success %>
+          </span>
+        </div>
+        <% } %>
    <div class="w-full h-screen flex px-20">
      <div class="w-1/2 h-screen flex items-start justify-start pt-60">
         <div class="w-full mb-5px px-20">
@@ -36,12 +43,15 @@
         
        
         <form autocomplete="off" action="/users/login" method="post">
-          
             <input class="w-full block border-[1px] bg-zinc-100 rounded-md   border-zinc-200 px-3 py-2 mb-3" type="text" placeholder="email" name="email">
             <input class="w-full block border-[1px] bg-zinc-100 rounded-md border-zinc-200 px-3 py-2 " type="password" placeholder="password" name="password">
             <input class="bg-blue-500 rounded-full text-white mt-3 px-3 py-2" type="submit" value="login">
         </form>
         </div>
+        
+    </div>
+    <div>
+      <a class="text-blue-500 underline" href="/owners/loginpage">Owner panel</a>
     </div>
   </body>
 </html>
