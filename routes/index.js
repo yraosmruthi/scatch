@@ -16,11 +16,19 @@ router.get("/shop",isLoggedIn,async (req,res)=>{
     res.render("shop",{products, success});
 })
 router.get("/cart",isLoggedIn,async (req,res)=>{
+  try{
   let user = await userModel
   .findOne({email: req.user.email }).populate("cart");
-  
-    res.render("cart",{user,platformFee:PLATFORM_FEE});
+   const totalprice = user.cart.reduce((total,item)=>{
+    return total+item.discount+PLATFORM_FEE;
+   },0);
+    res.render("cart",{user,platformFee:PLATFORM_FEE,totalprice:totalprice});
+  }catch(err){
+    req.flash("error","something is wrong");
+    res.redirect("/");
+  }
   })
+
 
 router.get("/addtocart/:id",isLoggedIn,async (req,res)=>{
     let user = await userModel.findOne({email:req.user.email});
