@@ -1,4 +1,11 @@
 <%-include('./partials/header') %>
+<% if(success && success.length>0) { %>
+  <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-yellow-500">
+    <span class="inline-block mt-1 text-white">
+      <%= success %>
+    </span>
+  </div>
+  <% } %>
 <div class="w-full  h-screen ">
   <div class=" flex justify-center items-center m-20 ">
     <h1 class="text-4xl semibold">Welcome To <span class="text-blue-500">Owners </span>Page</h1>
@@ -7,23 +14,25 @@
     <div class="w-1/2 h-screen flex items-start justify-start">
       <div class="w-full h-screen justify-center items-center px-20 pt-10">
         <h3 class="text-3xl"> Create New <span class="text-blue-500">Admin</span></h3>
-        <form action="">
-          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-5 px-2 py-2" type="text" placeholder="name">
-          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-2" type="text" placeholder="email">
-          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-2" type="password" placeholder="password">
+        <form autocomplete="off" action="/owners/register" method="post">
+          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-5 px-2 py-2" type="text" placeholder="name" name="fullname">
+          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-2" type="text" placeholder="email" name="email">
+          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-2" type="password" placeholder="password" name="password">
           <input class="rounded-full bg-blue-500 px-3 py-4 mt-2.5 text-white" type="submit" value="Create Admin">
         </form>
       </div>
     </div>
-  
+    <div class="absolute bottom-5 left-5">
+      <a href="/"><h5 class="text-blue-500 underline mt-[500px]">User Page</h5></a>
+    </div>
 
     <div class="w-1/2 flex  h-screen flex items-start justify-start">
       <div class="w-full h-screen justify-center items-center px-20 pt-10">
         <h3 class="text-3xl"> Login To <span class="text-blue-500">Admin</span> Account</h3>
-        <form action="">
-          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-3" type="text" placeholder="email">
-          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-3" type="password" placeholder="password">
-          <input class="rounded-full bg-blue-500 px-2 py-3 mt-2.5 text-white" type="submit" value="Login Admin">
+        <form action="/owners/login" method="post">
+          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-3" type="text" placeholder="email" name="email">
+          <input class="w-[80%] block border-[1px] bg-zinc-100 rounded-md border-zinc-200 mt-4 px-2 py-3" type="password" placeholder="password" name="password">
+          <input class="rounded-full bg-blue-500 px-3 py-3 mt-2.5 text-white" type="submit" value="Login Admin">
         </form>
       </div>
     </div>

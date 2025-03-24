@@ -23,7 +23,7 @@ module.exports.registeredUser = async  (req,res)=>{
                     let token= generateToken(user);
                     res.cookie("token",token);
                     req.flash("success", "User registered successfully! Please log in.");
-                    res.rendirect("/");
+                    res.redirect("/");
                 }
             });
         });
