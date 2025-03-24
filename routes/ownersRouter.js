@@ -4,10 +4,12 @@ const ownerModel = require("../models/owner_model");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { generateToken } = require('../utils/generateToken');
+const isOwnerloggedin = require('../middlewares/isOwnerloggedin');
 
 router.get("/ownerpage", (req,res)=>{
-  let success= req.flash("success")
-  res.render("owner",{success});
+  let success= req.flash("success");
+  let error = req.flash("error");
+  res.render("owner",{success,error});
 })
 
 router.post("/register",async (req,res)=>{
@@ -58,10 +60,15 @@ router.post("/login",async (req,res)=>{
 })
 
 
-router.get("/admin",(req,res)=>{
+router.get("/admin",isOwnerloggedin,(req,res)=>{
   let success=req.flash("success");
 
     res.render("createproducts",{success});
 });
+
+router.get("/logout",(req,res)=>{
+  res.cookie("token2","");
+  res.redirect("/owners/ownerpage")
+})
 
 module.exports = router;

@@ -1,5 +1,11 @@
 <%- include('./partials/header') %>
-
+<% if(error.length>0) { %>
+   <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+     <span class="inline-block mt-1 text-white">
+       <%= error %>
+     </span>
+   </div>
+   <% } %>
 <% if(success.length>0) { %>
    <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-yellow-500">
      <span class="inline-block mt-1 text-white">
@@ -14,6 +20,9 @@
            <a class="block w-fit mb-2" href="/shop">All Products</a>
            <a class="block w-fit mb-2" href="/owners/admin">Create Product</a>
         </div>
+    </div>
+    <div class="absolute bottom-5 left-5">
+      <a href="/owners/logout"><h5 class="text-blue-500 underline mt-[500px]">Logout Owner</h5></a>
     </div>
     <main class="w-3/4 justify-center items-center  p-8  mr-64 shadow bg-gray-200">
       <h2 class="text-xl font-bold">Create Your Product</h2>
