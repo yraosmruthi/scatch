@@ -29,7 +29,6 @@ email,
 password: hash
 });
 
-console.log(createdOwner);
 let token2 = generateToken(createdOwner);
 res.cookie("token2", token2);
 req.flash("success","owner registered successfully");
@@ -40,35 +39,49 @@ console.log(err.message);
 });
 
 router.post("/login",async (req,res)=>{
+  try{
   let {email,password} = req.body;
   let owner = await ownerModel.findOne({email:email});
   if(!owner) return res.send('email or password incorrect');
 
-  bcrypt.compare(password,owner.password,(err,result)=>{
-    if(result){
-      console.log(password,owner.password);
-      let token2=  generateToken(owner);
-      res.cookie("token2",token2);
-      res.redirect("/owners/admin");
-    }else{
-      console.log(password,owner.password);
-        return res.send("email or password incorrect");
-    }
-  })
-  
+  let isMatch = await bcrypt.compare(password,owner.password);
+  if(!isMatch){
+    req.flash("error","email or password incorrect");
+    return res.redirect("/owners/ownerpage");
+  }
+  else{
+  let token2=generateToken(owner);
+  res.cookie("token2",token2);
 
+  req.flash("success","logged in");
+   return res.redirect("/owners/admin");
+  }
+}catch(err){
+  console.log(err.message);
+  
+}
+  
 })
 
 
 router.get("/admin",isOwnerloggedin,(req,res)=>{
   let success=req.flash("success");
+  let error = req.flash("error");
 
-    res.render("createproducts",{success});
+    res.render("createproducts",{success,error});
 });
 
 router.get("/logout",(req,res)=>{
   res.cookie("token2","");
   res.redirect("/owners/ownerpage")
+})
+
+router.get("/deleteowner",isOwnerloggedin,async (req,res)=>{
+  let owner= await ownerModel.deleteOne({email:req.owner.email})
+  console.log(owner);
+   res.clearCookie("token2");
+   res.redirect("/owners/ownerpage");
+
 })
 
 module.exports = router;

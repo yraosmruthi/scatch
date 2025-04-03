@@ -1,13 +1,13 @@
 <%-include('./partials/header') %>
-<% if(error.length>0) { %>
-  <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+<% if(error && error.length>0) { %>
+  <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
     <span class="inline-block mt-1 text-white">
       <%= error %>
     </span>
   </div>
   <% } %>
 <% if(success && success.length>0) { %>
-  <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-yellow-500">
+  <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
     <span class="inline-block mt-1 text-white">
       <%= success %>
     </span>
@@ -29,9 +29,11 @@
         </form>
       </div>
     </div>
+    
     <div class="absolute bottom-5 left-5">
       <a href="/"><h5 class="text-blue-500 underline mt-[500px]">User Page</h5></a>
     </div>
+    
 
     <div class="w-1/2 flex  h-screen flex items-start justify-start">
       <div class="w-full h-screen justify-center items-center px-20 pt-10">

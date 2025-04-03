@@ -20,9 +20,7 @@ router.get("/profile",isLoggedIn,async (req,res)=>{
     try{
     let user = await userModel.findOne({email:req.user.email});
     if (!user) return res.send("User not found");
-    console.log("User found:", user); 
     let cartCount = user.cart.length;
-    console.log(cartCount);
     res.render("profile",{user,cartCount});
 
     } catch(err){

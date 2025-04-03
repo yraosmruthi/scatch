@@ -1,13 +1,13 @@
 <%- include('./partials/header') %>
-<% if(error.length>0) { %>
-   <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+<% if(error && error.length>0) { %>
+   <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
      <span class="inline-block mt-1 text-white">
        <%= error %>
      </span>
    </div>
    <% } %>
 <% if(success.length>0) { %>
-   <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-yellow-500">
+   <div class="absolute top-5 left-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
      <span class="inline-block mt-1 text-white">
        <%= success %>
      </span>
@@ -21,9 +21,7 @@
            <a class="block w-fit mb-2" href="/owners/admin">Create Product</a>
         </div>
     </div>
-    <div class="absolute bottom-5 left-5">
-      <a href="/owners/logout"><h5 class="text-blue-500 underline mt-[500px]">Logout Owner</h5></a>
-    </div>
+    
     <main class="w-3/4 justify-center items-center  p-8  mr-64 shadow bg-gray-200">
       <h2 class="text-xl font-bold">Create Your Product</h2>
      
@@ -50,6 +48,13 @@
 
          </div>
 
+         <div class="absolute bottom-5 right-5">
+            <a href="/owners/logout"><h5 class="text-blue-500 underline mt-[500px]">Logout Owner Account</h5></a>
+          </div>
+        
+         <div class="absolute bottom-5 left-5">
+            <a href="/owners/deleteowner"><h5 class="text-red-500 underline mt-[500px]">Delete Owner Account</h5></a>
+          </div>
       </div>
       <input class="px-5 py-2 rounded mt-3 bg-blue-500 text-white" type="submit"
       value="Create New Product">
